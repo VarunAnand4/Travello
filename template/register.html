@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Form</title>
+    <style>
+      /* Style the form container */
+      .form-container {
+        max-width: 500px;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 50px;
+      }
+
+      /* Style the form fields */
+      input[type=text], input[type=email], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        border-radius: 4px;
+      }
+
+      /* Style the submit button */
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      /* Style the cancel button */
+      .cancel-button {
+        background-color: #f44336;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      /* Float the cancel and submit buttons side by side */
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Registration Form</h2>
+      <form action="register" method="post">
+ 
+        {% csrf_token %}
+
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first_name" >
+
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last_name" >
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" >
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" >
+
+        <label for="password1">Password</label>
+        <input type="password" id="password1" name="password1" >
+
+        <label for="password2">Confirm Password</label>
+        <input type="password" id="password2" name="password2" >
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        <div class="button-container">
+          <button type="button" class="cancel-button">Cancel</button>
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
